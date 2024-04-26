@@ -5863,6 +5863,7 @@ let InputPanel = (function() {
             // });
             this.items.add.on("itemClicked", () => {
                 _this.items.plate.Value = _this.items.plate.Value.toUpperCase();
+                if(_this.items.plate.Value.length == 0) return;
                 _this.emit("add_more", _this.items.plate.Value);
             });
 
@@ -6046,7 +6047,12 @@ const MainPanel = (function() {
                 this.input_panel.show();
             });
             this.plates_panel.top_panel.on("send", () => {
-                _this.emit("send", _this.plates_panel.plates);
+                if(_this.plates_panel.plates.length == 0) {
+                    _this.input_panel.show();
+                } else {
+                    _this.input_panel.clear();
+                    _this.emit("send", _this.plates_panel.plates);
+                }
             });
 
             //
@@ -6055,11 +6061,13 @@ const MainPanel = (function() {
                 _this.input_panel.hide();
             });
             this.input_panel.on("add_more", (plate) => {
+                if(plate.length == 0) return;
                 _this.plates_panel.add(plate);
                 _this.input_panel.clear();
             });
             this.input_panel.on("send", (plate) => {
-                _this.plates_panel.add(plate);
+                if(plate.length == 0 && _this.plates_panel.plates.length == 0) return;
+                if(plate.length > 0) _this.plates_panel.add(plate);
                 _this.input_panel.clear();
                 _this.emit("send", _this.plates_panel.plates);
             });
@@ -7789,7 +7797,7 @@ window.CusUI = require("../../../cus-ui");
 
 const MastermindClient = require("./nexus/MastermindClient");
 
-window.BerIsSafari = false; // 某古老修正，目前懶得改
+window.BerIsSafari = false; // 某古老修正，目前懶得改 (本元件在某些地方會讓 safari 的文字太大，記得是古代版本才需要這樣)
 
 const MainPanel = require("./MainPanel");
 
