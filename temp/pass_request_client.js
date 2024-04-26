@@ -5791,7 +5791,7 @@ function genSeperator(id) {
 const itemSettings = [];
 
 itemSettings.push([
-    genTitleBox("plate", "Monini", "", "請輸入車牌", "string", false, 4),
+    genTitleBox("plate", "尼匠/尼尼 免費停車", "", "請輸入車牌", "string", false, 4),
     genTitleButton("clear", "", "清除", 1),
 ]);
 itemSettings.push([
@@ -7616,7 +7616,7 @@ function genSeperator(id) {
 const itemSettings = [];
 
 itemSettings.push([
-    genTitleButton("add", "Monini 免費停車", "新增車牌", 1),
+    genTitleButton("add", "尼匠/尼尼 免費停車", "新增車牌", 1),
     genTitleButton("send", "", "送出設定", 1),
 ]);
 
