@@ -7843,7 +7843,7 @@ function wireUp() {
     );
     mastermind_client.on("connect", () => {
 
-        // mastermind_client.check_request_id(window.BerParams.request_id);
+        mastermind_client.check_request_id(window.BerParams.request_id);
 
     });
 
