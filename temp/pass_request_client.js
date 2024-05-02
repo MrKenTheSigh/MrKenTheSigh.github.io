@@ -10492,7 +10492,7 @@ var Button = (function() {
                 //
                 if(scrollPanel && scrollPanel.isScrolling) {
                     console.log("yo");
-                    return;
+                    // return;
                 }
                 //
                 var endTarget = document.elementFromPoint(
