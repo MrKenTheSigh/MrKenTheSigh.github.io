@@ -10486,35 +10486,39 @@ var Button = (function() {
                     target = null;
                 }
             }
+            // function onTouchEnd(event) {
+            //     if(_this.opts.disabled) return;
+            //     setBtnColor(false);
+            //     //
+            //     if(scrollPanel && scrollPanel.isScrolling) {
+            //         console.log("yo");
+            //         return;
+            //     }
+            //     //
+            //     var endTarget = document.elementFromPoint(
+            //         event.changedTouches[0].pageX,
+            //         event.changedTouches[0].pageY
+            //     );
+            //     if(target === endTarget) {
+            //         if(event) {
+            //             // if(consumeEvent) {
+            //                 event.preventDefault();
+            //                 event.stopPropagation();
+            //             // }
+            //             _this.emit("itemClicked", _this.txtValue.Value);
+            //         }
+            //     }
+            // }
             function onTouchEnd(event) {
                 if(_this.opts.disabled) return;
                 setBtnColor(false);
-                //
-                if(scrollPanel && scrollPanel.isScrolling) {
-                    console.log("yo");
-                    // return;
-                    BerAlert.show({ msg: "scrolling" });
-                } else {
-                    BerAlert.show({ msg: "not scrolling" });
+                if(event) {
+                    // if(consumeEvent) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    // }
+                    _this.emit("itemClicked", _this.txtValue.Value);
                 }
-                //
-                var endTarget = document.elementFromPoint(
-                    event.changedTouches[0].pageX,
-                    event.changedTouches[0].pageY
-                );
-                if(target === endTarget) {
-                    BerAlert.show({ msg: "target" });
-                    if(event) {
-                        // if(consumeEvent) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        // }
-                        _this.emit("itemClicked", _this.txtValue.Value);
-                    }
-                } else {
-                    BerAlert.show({ msg: "not target" });
-                }
-
             }
 
             function onMouseDown() {
