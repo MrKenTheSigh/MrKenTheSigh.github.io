@@ -7843,7 +7843,7 @@ function wireUp() {
     );
     mastermind_client.on("connect", () => {
 
-        mastermind_client.check_request_id(window.BerParams.request_id);
+        // mastermind_client.check_request_id(window.BerParams.request_id);
 
     });
 
@@ -10493,6 +10493,9 @@ var Button = (function() {
                 if(scrollPanel && scrollPanel.isScrolling) {
                     console.log("yo");
                     // return;
+                    BerAlert.show({ msg: "scrolling" });
+                } else {
+                    BerAlert.show({ msg: "not scrolling" });
                 }
                 //
                 var endTarget = document.elementFromPoint(
@@ -10500,6 +10503,7 @@ var Button = (function() {
                     event.changedTouches[0].pageY
                 );
                 if(target === endTarget) {
+                    BerAlert.show({ msg: "target" });
                     if(event) {
                         // if(consumeEvent) {
                             event.preventDefault();
@@ -10507,6 +10511,8 @@ var Button = (function() {
                         // }
                         _this.emit("itemClicked", _this.txtValue.Value);
                     }
+                } else {
+                    BerAlert.show({ msg: "not target" });
                 }
 
             }
@@ -12963,9 +12969,11 @@ var TextBox = (function() {
             });
 
             this.domOn("click", function() {
+                console.log(1111)
                 _this.focus();
             });
             this.domOn("touchend", function() {
+                console.log(2222)
                 _this.focus();
             });
 
