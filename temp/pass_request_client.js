@@ -5873,8 +5873,8 @@ let InputPanel = (function() {
             });
 
 
-            console.log(`!!!!!!!!!! ${this.items.add.txtValue.look.txtSize} !!!!!!!!!!`);
-            this.items.add.txtValue.look.txtSize = 15.6;
+            // console.log(`!!!!!!!!!! ${this.items.add.txtValue.look.txtSize} !!!!!!!!!!`);
+            // this.items.add.txtValue.look.txtSize = 15.6;
             this.redraw(true)
 
         }
@@ -12960,6 +12960,13 @@ var TextBox = (function() {
             });
             this.tbValue.on("blur", function() {
                 _this.emit("blur");
+            });
+
+            this.domOn("click", function() {
+                _this.focus();
+            });
+            this.domOn("touchend", function() {
+                _this.focus();
             });
 
         }
